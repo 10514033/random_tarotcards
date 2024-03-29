@@ -82,7 +82,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://random-tarotcards.onrender.com/'
+    'https://random-tarotcards.onrender.com'
 ]
 
 # Password validation
