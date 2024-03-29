@@ -21,7 +21,7 @@
         {% endif %}
 
         <form method="post">
-            {% csrf_token %}
+
             <input type="checkbox" name="cardname" id="cardname" {% if cardname_selected %}checked{% endif %}
                 onchange="toggleDescriptions()">
             <label for="cardname">隐藏描述</label>
