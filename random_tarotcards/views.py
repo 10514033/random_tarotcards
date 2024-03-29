@@ -3,6 +3,7 @@ from django.conf import settings
 import os
 import random
 from . import image_info
+import socket
 
 
 def index(request):
@@ -10,8 +11,12 @@ def index(request):
     # 获取文件夹中所有图片的路径
     images = [os.path.join(images_dir, image)
               for image in os.listdir(images_dir)]
-    # print("Images in images_dir:", images)
 
+    # print("Images in images_dir:", images)
+    hostname = socket.gethostname()
+    print(666)
+    print(hostname)
+    print(666)
     if request.method == 'POST':
         rws_selected = 'rws_images' in request.POST
         cardname_selected = 'cardname' in request.POST

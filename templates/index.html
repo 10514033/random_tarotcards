@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <title>Random Image</title>
 
 </head>
 
 <body>
-    {% load static %}
     <div class="center">
         <h1>Random Image Generator</h1>
         {% if image %}
@@ -19,7 +19,6 @@
         <p id="uprightDescription" class="description"><strong>正位:</strong><br>{{ upright }}</p>
         <p id="reversedDescription" class="description"><strong>逆位:</strong><br>{{ reversed }}</p>
         {% endif %}
-
         <form method="post">
             {% csrf_token %}
             <input type="checkbox" name="cardname" id="cardname" {% if cardname_selected %}checked{% endif %}
