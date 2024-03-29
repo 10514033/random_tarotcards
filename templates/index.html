@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <title>Random Image</title>
+
+</head>
+
+<body>
+    {% load static %}
+    <div class="center">
+        <h1>Random Image Generator</h1>
+        {% if image %}
+        <img src="{% static image %}" alt="Random Image" width="187" height="325"><br>
+        <label id="cardName" class="description">{{name}}</label>
+        <p id="uprightDescription" class="description"><strong>正位:</strong><br>{{ upright }}</p>
+        <p id="reversedDescription" class="description"><strong>逆位:</strong><br>{{ reversed }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="checkbox" name="cardname" id="cardname" {% if cardname_selected %}checked{% endif %}
+                onchange="toggleDescriptions()">
+            <label for="cardname">隐藏描述</label>
+            <input type="checkbox" name="rws_images" id="rws_images" {% if rws_selected %}checked{% endif %}>
+            <label for="rws_images">只选RWS图片</label><br><br>
+            <button type="submit">Generate Random Image</button>
+        </form>
+
+
+    </div>
+</body>
+
+</html>
+
+
+<!-- JavaScript部分 -->
+<script>
+    window.onload = function () {
+        var cardnameCheckbox = document.getElementById('cardname');
+        if (cardnameCheckbox.checked) {
+            toggleDescriptions();
+        }
+    }
+
+    function toggleDescriptions() {
+        var hideCheckbox = document.getElementById('cardname');
+        var uprightDesc = document.getElementById('uprightDescription');
+        var reversedDesc = document.getElementById('reversedDescription');
+        var cardNameDesc = document.getElementById('cardName');
+        if (hideCheckbox.checked) {  // 如果复选框被选中
+            uprightDesc.style.visibility = 'hidden';  // 隐藏正位描述
+            reversedDesc.style.visibility = 'hidden';  // 隐藏逆位描述
+            cardNameDesc.style.visibility = 'hidden';
+        } else {
+            uprightDesc.style.visibility = 'visible';  // 显示正位描述
+            reversedDesc.style.visibility = 'visible';  // 显示逆位描述
+            cardNameDesc.style.visibility = 'visible';
+        }
+    }
+</script>
