@@ -13,7 +13,7 @@
     <div class="center">
         <h1>Random Image Generator</h1>
         {% if image %}
-        <img src="{% image %}" alt="Random Image" width="187" height="325"><br>
+        <img src="{%static image %}" alt="Random Image" width="187" height="325"><br>
         <label id="cardName" class="description">{{name}}</label>
         <p id="uprightDescription" class="description"><strong>正位:</strong><br>{{ upright }}</p>
         <p id="reversedDescription" class="description"><strong>逆位:</strong><br>{{ reversed }}</p>
