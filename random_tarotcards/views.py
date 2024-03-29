@@ -27,8 +27,11 @@ def index(request):
             random_image), {}).get('upright', '')
         image_reversed = image_info.image_info_dict.get(os.path.basename(
             random_image), {}).get('reversed', '')
-        print(random_image)
-        # print(rws_selected)
+        # print(random_image)
+        index = random_image.rfind('static')
+        random_image = random_image[index:]
+        random_image = random_image.replace('static\\', '')
+        # print(stripped_path)
         return render(request, 'index.html', {'image': random_image, 'rws_selected': rws_selected, 'name': image_name, 'upright': image_upright, 'reversed': image_reversed, 'cardname_selected': cardname_selected})
 
     # 如果是 GET 请求，直接渲染模板
