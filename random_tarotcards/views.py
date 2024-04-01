@@ -30,8 +30,10 @@ def index(request):
             random_image), {}).get('reversed', '')
 
         random_image = random_image.split('\\')[-2:]
-        # print(random_image[0]+'/'+random_image[1])
+
         random_image = random_image[0]+'/'+random_image[1]
+        print(random_image)
+
         return render(request, 'index.html', {'image': random_image, 'rws_selected': rws_selected, 'name': image_name, 'upright': image_upright, 'reversed': image_reversed, 'cardname_selected': cardname_selected})
 
     # 如果是 GET 请求，直接渲染模板
