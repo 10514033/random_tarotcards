@@ -6,7 +6,7 @@ from . import image_info
 
 
 def index(request):
-    images_dir = os.path.join(settings.BASE_DIR, 'static', 'images')
+    images_dir = os.path.join(settings.BASE_DIR, 'static', 'file', 'images')
     # 获取文件夹中所有图片的路径
     images = [os.path.join(images_dir, image)
               for image in os.listdir(images_dir)]
